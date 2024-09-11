@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public final class RuntimeAgent {
+public final class Agent {
     public static void premain(String args, Instrumentation instrumentation) {
         exportJVMCIModulePackages(instrumentation);
         if (args != null) {
@@ -15,7 +15,7 @@ public final class RuntimeAgent {
             for (String c : classes) {
                 try {
                     MethodReplacer.register(Class.forName(c));
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
         }

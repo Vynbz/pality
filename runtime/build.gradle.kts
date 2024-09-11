@@ -7,7 +7,7 @@ dependencies {
 tasks.jar {
     manifest {
         attributes(
-                "Premain-Class" to "io.pality.runtime.RuntimeAgent",
+                "Premain-Class" to "io.pality.runtime.Agent",
                 "Can-Redefine-Classes" to "true",
                 "Can-Retransform-Classes" to "true"
         )
