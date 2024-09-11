@@ -52,11 +52,15 @@ To obtain the machine code for your replacements, you can write your functions i
 1. Write your function in Zig:
 
 ```zig
-export fn sum2(a: i32, b: i32) i32 {
+export fn sum(a: i32, b: i32) i32 {
     return a + b;
 }
+```
 
-export fn sum6(a: i32, b: i32, c: i32, d: i32, e: i32, f: i32) i32 {
+OR
+
+```zig
+export fn sum(a: i32, b: i32, c: i32, d: i32, e: i32, f: i32) i32 {
     return a + b + c + d + e + f;
 }
 ```
@@ -64,11 +68,15 @@ export fn sum6(a: i32, b: i32, c: i32, d: i32, e: i32, f: i32) i32 {
 2. Convert to assembly:
 
 ```asm
-sum2:
+sum:
     lea eax, [rcx + rdx]
     ret
+```
 
-sum6:
+OR
+
+```asm
+sum:
     add ecx, edx
     lea eax, [r8 + r9]
     add eax, ecx
@@ -99,7 +107,7 @@ if (windowsOS) {
 For static methods, adjust your assembly code accordingly. For example:
 
 ```asm
-sum2:
+sum:
     lea eax, [rdx + r8]
     ret
 ```
